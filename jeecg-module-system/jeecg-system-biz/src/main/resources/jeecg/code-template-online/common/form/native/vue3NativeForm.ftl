@@ -48,7 +48,9 @@
 	          <a-input-password v-model:value="formData.${po.fieldName}" placeholder="请输入${po.filedComment}" <#if po.readonly=='Y'>disabled<#else>:disabled="disabled"</#if>/>
 			<#elseif po.classType =='sel_user'>
 	          <#assign need_dept_user = true>
-	          <j-select-user-by-dept v-model:value="formData.${po.fieldName}" <#if po.readonly=='Y'>disabled<#else>:disabled="disabled"</#if>/>
+			  <#-- update-begin---author:chenrui ---date:20240102  for：[issue/#5711]修复用户选择组件在生成代码后变成部门用户选择组件---------- -->
+	          <j-select-user v-model:value="formData.${po.fieldName}" <#if po.readonly=='Y'>disabled<#else>:disabled="disabled"</#if>/>
+			  <#-- update-end---author:chenrui ---date:20240102  for：[issue/#5711]修复用户选择组件在生成代码后变成部门用户选择组件---------- -->
 			<#elseif po.classType =='textarea'>
 	          <a-textarea v-model:value="formData.${autoStringSuffixForModel(po)}" :rows="4" placeholder="请输入${po.filedComment}" <#if po.readonly=='Y'>disabled<#else>:disabled="disabled"</#if>/>
 			<#elseif po.classType=='radio'>
